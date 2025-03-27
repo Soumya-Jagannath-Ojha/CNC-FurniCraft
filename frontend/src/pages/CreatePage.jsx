@@ -1,16 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useProductStore } from "../store/product.js";
 
 const CreatePage = () => {
-  const [productName, setProductName] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState(null);
 
   const [newProduct,setNewProduct] = useState({
     name: "",
     price:"",
     image:"",
   })
+  const {createProduct} = useProductStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,11 +18,17 @@ const CreatePage = () => {
       return;
     }
     // Handle form submission (e.g., send data to API)
-    console.log({ productName, price, image });
+    // console.log({ productName, price, image });
   };
 
-  const handleAddProduct = ()=>{
+  const handleAddProduct = async()=>{
     console.log(newProduct);
+
+    const {success,message} = await createProduct(newProduct);
+    console.log("Success:", success);
+    console.log("Message:", message);
+    
+
     
   }
 
@@ -32,7 +37,7 @@ const CreatePage = () => {
       <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
         Create Product
       </h2>
-      <form onSubmit={handleAddProduct} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Product Name */}
         <div>
           <label className="block text-gray-700 dark:text-white font-medium">
@@ -85,6 +90,7 @@ const CreatePage = () => {
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+          onClick={handleAddProduct}
         >
           Create Product
         </button>

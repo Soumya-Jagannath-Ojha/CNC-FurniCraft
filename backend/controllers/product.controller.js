@@ -14,9 +14,9 @@ export const getProducts = async(req,res)=>{
 export const createProduct = async (req, res) => {
     const product = req.body;
   
-    if(!mongoose.Types.ObjectId.isValid(id)){
-      return res.status(404).json({success: false, message: "Invalid Product Id"})
-    }
+    // if(!mongoose.Types.ObjectId.isValid(id)){
+    //   return res.status(404).json({success: false, message: "Invalid Product Id"})
+    // }
   
     if (!product.name || !product.price || !product.image) {
       return res
