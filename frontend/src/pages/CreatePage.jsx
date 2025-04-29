@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useProductStore } from "../store/product.js";
+import { ToastContainer, toast } from 'react-toastify';
 
 const CreatePage = () => {
 
@@ -25,10 +26,16 @@ const CreatePage = () => {
     console.log(newProduct);
 
     const {success,message} = await createProduct(newProduct);
+
+    if(!success){
+      toast('Error ',message);
+    }else{
+      toast('Success! ')
+    }
     console.log("Success:", success);
     console.log("Message:", message);
     
-
+    setNewProduct({name: "", price: "", image: ""});
     
   }
 
@@ -95,6 +102,7 @@ const CreatePage = () => {
           Create Product
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
