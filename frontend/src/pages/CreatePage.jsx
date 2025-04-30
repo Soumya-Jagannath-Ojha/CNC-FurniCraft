@@ -12,15 +12,15 @@ const CreatePage = () => {
   })
   const {createProduct} = useProductStore();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!newProduct.name || !newProduct.price || !newProduct.image) {
-      alert("Please fill in all fields.");
-      return;
-    }
-    // Handle form submission (e.g., send data to API)
-    // console.log({ productName, price, image });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!newProduct.name || !newProduct.price || !newProduct.image) {
+  //     alert("Please fill in all fields.");
+  //     return;
+  //   }
+  //   // Handle form submission (e.g., send data to API)
+  //   // console.log({ productName, price, image });
+  // };
 
   const handleAddProduct = async()=>{
     console.log(newProduct);
@@ -28,9 +28,9 @@ const CreatePage = () => {
     const {success,message} = await createProduct(newProduct);
 
     if(!success){
-      toast('Error ',message);
+      toast.error(message);
     }else{
-      toast('Success! ')
+      toast.success(message)
     }
     console.log("Success:", success);
     console.log("Message:", message);
@@ -44,7 +44,7 @@ const CreatePage = () => {
       <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
         Create Product
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <div  className="space-y-4">
         {/* Product Name */}
         <div>
           <label className="block text-gray-700 dark:text-white font-medium">
@@ -101,7 +101,7 @@ const CreatePage = () => {
         >
           Create Product
         </button>
-      </form>
+      </div>
       <ToastContainer />
     </div>
   );

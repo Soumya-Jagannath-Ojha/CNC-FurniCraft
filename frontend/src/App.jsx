@@ -5,9 +5,12 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import CreatePage from './pages/CreatePage';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 function App() {
 
   return (
+    <>
+    <ToastContainer />
     <div>
         <Navbar />
         <Routes>
@@ -15,7 +18,9 @@ function App() {
           <Route path="/create"  element={<CreatePage />}/>
 
         </Routes>
+        
     </div>
+    </>
   )
 }
 
