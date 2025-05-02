@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="text-xl font-bold text-gray-800 dark:text-white">
         <Link to={"/"}>
         
-        MyLogo
+        CNC-FurniCraft
         </Link>
       </div>
 
