@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useProductStore } from "../store/product";
 import { ToastContainer, toast } from "react-toastify";
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const ProductCard = ({ product, onEdit, onDelete }) => {
   const { deleteProduct, updateProduct } = useProductStore();
@@ -13,7 +14,7 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
     if (!success) {
       toast.error(message);
     } else {
-      toast.success(message);
+      toast.warning(message);
     }
   };
 
@@ -160,13 +161,14 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
           </p>
 
           {/* Buttons */}
-          <div className="flex justify-between">
+          <div className="ex justify-start space-x-4 mt-4">
             <button
               // onClick={() => handleUpdatedProduct(product._id, updateProduct)}
               onClick={() => setShowModal(true)}
               className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
             >
-              Edit
+              
+              <FaEdit />
             </button>
             <button
               onClick={(e) => {
@@ -174,10 +176,9 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
                 handleDeleteProduct(product._id)}}
               className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
             >
-              Delete
+              <FaTrash />
             </button>
           </div>
-          {/* <ToastContainer /> */}
         </div>
       </div>
     </>

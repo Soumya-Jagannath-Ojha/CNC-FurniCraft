@@ -102,7 +102,6 @@ const CreatePage = () => {
           Create Product
         </button>
       </div>
-      <ToastContainer />
     </div>
   );
 };
