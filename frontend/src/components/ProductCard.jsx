@@ -38,6 +38,7 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
 
   return (
     <>
+    {/* Model  */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
           <div className="relative bg-white dark:bg-gray-700 rounded-lg p-6 w-full max-w-md">
